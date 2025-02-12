@@ -1,0 +1,96 @@
+<!-- src/app/restaurants/restaurants.component.html -->
+<div class="restaurant-container">
+  <h1 class="heading">Manage Restaurants</h1>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+  <!-- Search Input -->
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search restaurants..."
+      [(ngModel)]="searchTerm"
+      class="search-input"
+    />
+  </div>
+
+  <!-- Add New Restaurant Button -->
+  <button class="btn btn-add" (click)="openForm()">➕ Add Restaurant</button>
+
+  <!-- Restaurant List -->
+  <div class="restaurant-list">
+    <div *ngFor="let restaurant of filteredRestaurants" class="restaurant-card">
+      <h2>{{ restaurant.name }}</h2>
+      <p><strong>Address:</strong> {{ restaurant.address }}</p>
+      <p><strong>Phone:</strong> {{ restaurant.phone }}</p>
+      <p>
+        <strong>City:</strong>
+        {{ restaurant.city.name }} - {{ restaurant.city.country }}
+      </p>
+      <div class="actions">
+        <button (click)="editRestaurant(restaurant)">✏️ Edit</button>
+        <button (click)="deleteRestaurant(restaurant.id)">🗑️ Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Form -->
+  <div *ngIf="showForm" class="form-container">
+    <h2>{{ selectedRestaurant ? "Edit Restaurant" : "Add New Restaurant" }}</h2>
+    <form [formGroup]="restaurantForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Enter restaurant name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          id="address"
+          type="text"
+          formControlName="address"
+          placeholder="Enter restaurant address"
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          id="phone"
+          type="text"
+          formControlName="phone"
+          placeholder="Enter restaurant phone"
+        />
+      </div>
+      <!-- Nested form group for city -->
+      <div formGroupName="city">
+        <div class="form-group">
+          <label for="cityName">City Name</label>
+          <input
+            id="cityName"
+            type="text"
+            formControlName="name"
+            placeholder="Enter city name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cityCountry">City Country</label>
+          <input
+            id="cityCountry"
+            type="text"
+            formControlName="country"
+            placeholder="Enter city country"
+          />
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-save">💾 Save</button>
+        <button type="button" class="btn btn-cancel" (click)="closeForm()">
+          ❌ Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

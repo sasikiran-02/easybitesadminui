@@ -1,0 +1,223 @@
+/* Global container for the dish page */
+.dish-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff; /* White container background */
+  color: #000; /* Default text color in container */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page Heading */
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ffa500; /* Bright orange for headings */
+}
+
+/* Error Message */
+.error-message {
+  color: #ff6f00;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* Search Container & Input */
+.search-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.75rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ffa500;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.btn-add {
+  background-color: #ffa500;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.btn-add:hover {
+  background-color: #e59400;
+}
+
+.btn-save {
+  background-color: #ff6f00;
+  color: #fff;
+}
+
+.btn-save:hover {
+  background-color: #e65c00;
+}
+
+.btn-cancel {
+  background-color: #333;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+.btn-cancel:hover {
+  background-color: #444;
+}
+
+/* Dish List Layout */
+.dish-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Dish Card: Black background with orange border and accents */
+.dish-card {
+  background-color: #000; /* Black card background */
+  border: 1px solid #ffa500; /* Orange border */
+  border-radius: 8px;
+  padding: 1.25rem;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 2px 6px rgba(255, 165, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.6);
+}
+
+/* Dish Card Headings & Text */
+.dish-card h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #ffa500; /* Orange heading text */
+  border-bottom: 1px solid #ffa500;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.dish-card p {
+  margin: 0.5rem 0;
+  line-height: 1.4;
+  color: #f0f0f0; /* White body text inside the black card */
+}
+
+/* Dish Image */
+.dish-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* Actions within Card */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/* Form Container: White background with orange border */
+.form-container {
+  background-color: #fff; /* White form background */
+  border: 1px solid #ffa500;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 6px rgba(255, 165, 0, 0.4);
+}
+
+.form-container h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #ffa500;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ffa500;
+}
+
+/* (Optional) Nested Group for City if needed */
+[formGroupName="city"] {
+  padding: 1rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dish-container {
+    padding: 1rem;
+  }
+  .dish-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,47 @@
+<div class="fullpage">
+  <!-- Left half: Image panel -->
+  <div class="left-side"></div>
+
+  <!-- Right half: Login form panel -->
+  <div class="right-side">
+    <div class="login-container">
+      <h2>Admin Login</h2>
+      <!-- Display error message if login fails -->
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+          />
+          <div *ngIf="submitted && f['email'].errors" class="error">
+            <span *ngIf="f['email'].errors['required']"
+              >Email is required.</span
+            >
+            <span *ngIf="f['email'].errors['email']">Enter a valid email.</span>
+          </div>
+        </div>
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          <div *ngIf="submitted && f['password'].errors" class="error">
+            <span *ngIf="f['password'].errors['required']"
+              >Password is required.</span
+            >
+          </div>
+        </div>
+        <button type="submit" class="btn-login">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

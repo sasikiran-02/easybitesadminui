@@ -1,0 +1,98 @@
+/* Full viewport container divided into two halves */
+.fullpage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Left side: image panel (using CSS background image) */
+.left-side {
+  flex: 1;
+  background: url("https://www.datocms-assets.com/116660/1706367148-food-and-beverage-desktop.jpg")
+    center center no-repeat;
+  background-size: cover;
+}
+
+/* Right side: login form panel */
+.right-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+/* Login form container (centered and constrained) */
+.login-container {
+  width: 80%;
+  max-width: 400px;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Form group styling */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #74ebd5;
+}
+
+/* Error message styling */
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Login button styling */
+.btn-login {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #74ebd5;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #67c9be;
+}
+
+/* Responsive: Stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .fullpage {
+    flex-direction: column;
+  }
+  .left-side {
+    height: 40vh;
+  }
+  .right-side {
+    height: auto;
+  }
+}

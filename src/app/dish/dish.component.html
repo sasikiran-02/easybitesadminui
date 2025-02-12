@@ -1,0 +1,119 @@
+<div class="dish-container">
+  <h1 class="heading">Manage Dishes</h1>
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+  <!-- Search Input -->
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search dishes..."
+      [(ngModel)]="searchTerm"
+      class="search-input"
+    />
+  </div>
+
+  <!-- Button to Open Form -->
+  <button class="btn btn-add" (click)="openForm()">➕ Add Dish</button>
+
+  <!-- Dish List -->
+  <div class="dish-list">
+    <div *ngFor="let dish of filteredDishes" class="dish-card">
+      <h2>{{ dish.name }}</h2>
+      <p><strong>Price:</strong> {{ dish.price | currency }}</p>
+      <p *ngIf="dish.description">
+        <strong>Description:</strong> {{ dish.description }}
+      </p>
+      <p><strong>Calories:</strong> {{ dish.calories }}</p>
+      <p *ngIf="dish.ingredients">
+        <strong>Ingredients:</strong> {{ dish.ingredients }}
+      </p>
+      <div *ngIf="dish.picture">
+        <img [src]="dish.picture" [alt]="dish.name" class="dish-image" />
+      </div>
+      <p><strong>Restaurant:</strong> {{ dish.restaurant.name }}</p>
+      <p><strong>Address:</strong> {{ dish.restaurant.address }}</p>
+      <div class="actions">
+        <button (click)="editDish(dish)">✏️ Edit</button>
+        <button (click)="deleteDish(dish.id)">🗑️ Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Form -->
+  <div *ngIf="showForm" class="form-container">
+    <h2>{{ selectedDish ? "Edit Dish" : "Add New Dish" }}</h2>
+    <form [formGroup]="dishForm" (ngSubmit)="onSubmit()">
+      <!-- Dish Fields -->
+      <div class="form-group">
+        <label for="name">Dish Name</label>
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Enter dish name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          id="price"
+          type="number"
+          formControlName="price"
+          placeholder="Enter price"
+          step="0.01"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          placeholder="Enter description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="calories">Calories</label>
+        <input
+          id="calories"
+          type="number"
+          formControlName="calories"
+          placeholder="Enter calories"
+        />
+      </div>
+      <div class="form-group">
+        <label for="ingredients">Ingredients</label>
+        <textarea
+          id="ingredients"
+          formControlName="ingredients"
+          placeholder="Enter ingredients"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="picture">Picture URL</label>
+        <input
+          id="picture"
+          type="text"
+          formControlName="picture"
+          placeholder="Enter picture URL"
+        />
+      </div>
+      <!-- Restaurant Dropdown -->
+      <div class="form-group">
+        <label for="restaurant">Restaurant</label>
+        <select id="restaurant" formControlName="restaurant">
+          <option [ngValue]="null">Select Restaurant</option>
+          <option *ngFor="let res of restaurants" [ngValue]="res">
+            {{ res.name }} - {{ res.address }}
+          </option>
+        </select>
+      </div>
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-save">💾 Save</button>
+        <button type="button" class="btn btn-cancel" (click)="closeForm()">
+          ❌ Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
